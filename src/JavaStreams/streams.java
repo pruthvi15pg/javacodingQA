@@ -1,6 +1,7 @@
 package JavaStreams;
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -188,44 +189,65 @@ public class streams {
                 .mapToInt(Integer::intValue)
                 .sum();
         System.out.println("sumOfFirstTwo----" + sumOfFirstTwo);
-        String st="pruthvi from hyderabad studied college in hyderabad,pruthvi working in hyderabad";
-        Arrays.stream(st.split(" "))
-                .forEach(System.out::println);
+
+        //count of words from string
+        String st="pruthvi from hyderabad studied college in hyderabad pruthvi working in hyderabad";
+        Map<String, Long> collect2 = Arrays.stream(st.split(" "))
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+       collect2.forEach((words,count)->
+               System.out.println("words:"+words+": "+count));
+       /*output:
+        word:college: 1
+        word:hyderabad: 3
+        word:pruthvi: 2
+        word:in: 2
+        word:studied: 1
+        word:working: 1
+        word:from: 1 */
 
         //product of first two numbers
         Optional<Integer> productOfTwo = listOfNum.stream()
                 .limit(2)
                 .reduce((a, b) -> a + b);
         System.out.println("product of two numbers----" + productOfTwo);
+        //output:product of two numbers----Optional[30]
 
-
+        //sum of unique numbers
         List<Integer> listOfNums = Arrays.asList(1, 2, 3, 4, 2, 3, 5, 6, 6, 7);
         Optional<Integer> sumOfuniquenos = listOfNums.stream()
                 .distinct()
                 .reduce((a, b) -> a + b);
         System.out.println("sumOfuniquenos ----" + sumOfuniquenos);
+        //output:sumOfuniquenos ----Optional[28]
 
 
-        //find first oddd numbers from list
+        //find first oddd numbers from list using Partitioning
         List<Integer> list = Arrays.asList(2, 4, 6, 7, 9, 3);
         list.stream()
                 .filter(i -> i % 2 != 0)
                 .findAny()
                 .ifPresent(System.out::println);
+        //output:7
+
+
+        //find odd even numbers from list using Partitioning
         Map<Boolean, List<Integer>> collect1 = list.stream()
                 .collect(Collectors.partitioningBy(i -> i % 2 == 0));
         System.out.println("even numbers----" + collect1.get(true));
         System.out.println("odd numbers----" + collect1.get(false));
+        /* output:
+        even numbers----[2, 4, 6]
+        odd numbers----[7, 9, 3]
+         */
 
-
-        //intersection of two lists
+        //intersection of two lists means common
         List<Integer> list11 = Arrays.asList(1, 2, 3, 4, 5);
         List<Integer> list22 = Arrays.asList(4, 5, 6, 7);
-
         List<Integer> list3 = list11.stream()
                 .filter(list22::contains)
                 .toList();
-        System.out.println(list3);
+        System.out.println("intersection of two lists:"+list3);
+        //output: [4, 5]
 
 
         //sum of first 10 naturnal numbers
@@ -234,34 +256,50 @@ public class streams {
                 .mapToInt(Integer::intValue)
                 .reduce((a, b) -> a + b);
 
-        System.out.println("naturalno----" + reduce);
+        System.out.println("sum of first 10 naturalno's----" + reduce);
+       //output: sum of first 10 naturalno----OptionalInt[55]
+
+        //or second way
         int sum = IntStream.rangeClosed(1, 10)
                 .sum();
         System.out.println("sum----" + sum);
-
+        //output:sum----55
 
         //print first even numbers
         IntStream.iterate(2,s->s+2)
                 .limit(10)
                 .boxed()
                 .forEach(System.out::println);
-    //sum of 10 even numbers
+        /* output:
+            2
+            4
+            6
+            8
+            10
+            12
+            14
+            16
+            18
+            20
+         */
+
+        //sum of 10 even numbers
         int sum1 = IntStream.rangeClosed(2, 20)
                 .filter(i -> i % 2 == 0)
                 .sum();
-
         System.out.println("sum1----" + sum1);
+        //output:sum1----110
 
-//most repeated element in an array
+        //most repeated element in an array
         List<Integer> list4 = Arrays.asList(1, 2, 2, 1, 1, 1);
-     list4.stream()
+        list4.stream()
              .collect(Collectors.groupingBy(i->i,LinkedHashMap::new,Collectors.counting()))
              .entrySet()
              .stream()
              .limit(1)
              .findFirst()
              .ifPresent(System.out::println);
-
+        //output:1=4
 
 
 
