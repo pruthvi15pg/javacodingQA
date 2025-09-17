@@ -6,7 +6,7 @@ public class FixLazySingleton implements Serializable,Cloneable {
     // static variable
     private static FixLazySingleton instanceObj;
 
-    //to fix reflection modify constructor
+    //to fix reflection----modify private constructor and add flag
     private static boolean instanceCreated = false;
     //private constructor
     private FixLazySingleton(){

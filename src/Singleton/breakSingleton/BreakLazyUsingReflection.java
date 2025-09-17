@@ -13,19 +13,19 @@ public class BreakLazyUsingReflection {
 
     */
     public static void main(String[] args) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
-        LazySingleton lazySingleton1 = LazySingleton.getInstance();
-        Constructor<LazySingleton> constructor=LazySingleton.class.getDeclaredConstructor();
+        Singleton Singleton1 = Singleton.getInstance();
+        Constructor<Singleton> constructor=Singleton.class.getDeclaredConstructor();
         constructor.setAccessible(true);
 
-        LazySingleton lazySingleton2=constructor.newInstance();
+        Singleton Singleton2=constructor.newInstance();
 
-        System.out.println("lazySingleton1 hashcode:"+lazySingleton1.hashCode());
-        System.out.println("lazySingleton2 hashcode:"+lazySingleton2.hashCode());
+        System.out.println("Singleton1 hashcode:"+Singleton1.hashCode());
+        System.out.println("Singleton2 hashcode:"+Singleton2.hashCode());
 
     }
 
     /* output:
-    lazySingleton1 hashcode:1595428806
-    lazySingleton2 hashcode:2093176254
+    Singleton1 hashcode:1595428806
+    Singleton2 hashcode:2093176254
      */
 }

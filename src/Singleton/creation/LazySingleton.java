@@ -2,7 +2,7 @@ package Singleton.creation;
 
 import java.io.Serializable;
 
-public class LazySingleton implements Cloneable, Serializable {
+public class LazySingleton {
 
     /* Key characteristics of Singleton
         1.private constructor--to prevent instantiation from outside
@@ -30,9 +30,6 @@ public class LazySingleton implements Cloneable, Serializable {
     }
 
 
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
+
 }
 

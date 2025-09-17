@@ -1,6 +1,6 @@
 package Singleton.breakSingleton;
 
-import Singleton.creation.LazySingleton;
+
 
 public class BreakLazyUsingCloning {
     public static void main(String[] args) throws CloneNotSupportedException {

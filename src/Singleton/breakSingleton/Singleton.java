@@ -4,7 +4,7 @@ import Singleton.creation.LazySingleton;
 
 import java.io.Serializable;
 
-//singleton for cloning
+//singleton---to break lazy singleton add Serializable,Cloneable with override method
 public class Singleton implements Serializable,Cloneable{
     // static variable
     private static Singleton instanceObj;
