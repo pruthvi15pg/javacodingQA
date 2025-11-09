@@ -19,9 +19,11 @@ public class AggregateFunctions {
         System.out.println(list.stream()
                 .mapToInt(n->n)
                 .sum());
+
         System.out.println(list.stream()
                 .mapToInt(n->n)
                 .average());
+
         System.out.println(list.stream()
                 .mapToInt(n->n)
                 .count());

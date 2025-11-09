@@ -17,14 +17,14 @@ public class streams {
         int firstIndex = 0;                  // always 0
         int lastIndex = word.length() - 1;   // depends on string length
 
-        System.out.println("String: " + word);
-        System.out.println("Length: " + word.length());
+        System.out.println("String: " + word); //String:apple
+        System.out.println("Length: " + word.length()); //Length:5
 
-        System.out.println("First index: " + firstIndex);
-        System.out.println("Last index : " + lastIndex);
+        System.out.println("First index: " + firstIndex); //First index: 0
+        System.out.println("Last index : " + lastIndex); //Last index : 4
 
-        System.out.println("First char : " + word.charAt(firstIndex));
-        System.out.println("Last char  : " + word.charAt(lastIndex));
+        System.out.println("First char : " + word.charAt(firstIndex)); //First char : a
+        System.out.println("Last char  : " + word.charAt(lastIndex)); //Last char  : e
 
 
         int[] arrays = {10, 20, 30, 40, 50};
@@ -32,16 +32,16 @@ public class streams {
         int firstArrayIndex = 0;                    // always 0
         int lastArrayIndex = arrays.length - 1;     // depends on array length
 
-        System.out.println("Array: " + Arrays.toString(arrays));
-        System.out.println("Length: " + arrays.length);
+        System.out.println("Array: " + Arrays.toString(arrays)); //Array: [10, 20, 30, 40, 50]
+        System.out.println("Length: " + arrays.length); // Length: 5
 
         // Values at first and last index
-        System.out.println("First index value: " + arrays[firstArrayIndex]);
-        System.out.println("Last index value: " + arrays[lastArrayIndex]);
+        System.out.println("First index value: " + arrays[firstArrayIndex]); //First index value: 10
+        System.out.println("Last index value: " + arrays[lastArrayIndex]); //Last index value: 50
 
         // Index positions
-        System.out.println("First index position: " + firstArrayIndex);
-        System.out.println("Last index position: " + lastArrayIndex);
+        System.out.println("First index position: " + firstArrayIndex); //First index position: 0
+        System.out.println("Last index position: " + lastArrayIndex); //Last index position: 4
 
         //join two streams
         List<Integer> list1 = Arrays.asList(1, 2, 3);
@@ -50,6 +50,10 @@ public class streams {
         Stream<Integer> joinStreams = Stream.concat(list1.stream(), list2.stream());
         joinStreams.forEach(System.out::println);
         //output:1 2 3 4 5 6
+
+
+
+
 
 
         //Merge two sorted lists into a single sorted list using java streams
@@ -301,8 +305,18 @@ public class streams {
              .ifPresent(System.out::println);
         //output:1=4
 
+        // print right side of "-"
+    String std="pru-thv-i-gop-al-";
+        List<String> collect3 = Arrays.stream(std.split("-"))
+                .skip(1)
+                .collect(Collectors.toList());
+        System.out.println("std list right side---" + collect3);
 
-
+        //print left side of "-"
+        List<String> collect4 = Arrays.stream(std.split("-"))
+                .limit(std.split("-").length - 1)
+                .collect(Collectors.toList());
+        System.out.println("std list left side----" + collect4);
     }
 
 

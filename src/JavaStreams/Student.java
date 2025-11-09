@@ -24,6 +24,12 @@ public class Student {
                 new Student("David", 23));
 
         //Average age of students
+
+
+
+
+
+
         OptionalDouble average = students.stream()
                 .mapToInt(Student::getAge)
                 .average();

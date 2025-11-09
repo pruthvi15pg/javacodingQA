@@ -31,6 +31,10 @@ public class Employee {
                         .thenComparing(Employee::getName)).forEach(System.out::println);
 
 
+
+        employees.stream()
+                .sorted(Comparator.comparingInt(Employee::getAge)
+                        .thenComparing(Employee::getName)).forEach(System.out::println);
     }
 
 }
