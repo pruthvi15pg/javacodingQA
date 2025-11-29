@@ -11,6 +11,23 @@ public class ReverseEachWord {
                 .collect(Collectors.joining(" "));
         System.out.println(collect);
 
+        //using logic
+        String[] words = sentence.split(" ");
+        String result = "";
+
+        for (int i = 0; i < words.length; i++) {
+            String word = words[i];
+            String reversed = "";
+
+            // Reverse each word using for loop
+            for (int j = word.length() - 1; j >= 0; j--) {
+                reversed = reversed + word.charAt(j);
+            }
+
+            result = result + reversed + " ";
+
+        }
+        System.out.println(result);
 
     }
 }
